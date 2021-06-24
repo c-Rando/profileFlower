@@ -13,7 +13,7 @@ const render = require("./dependencies/src/htmlRenderer");
 const teamMembers = [];
 const idArray = [];
 
-async function promptForUniqueId (answers) {
+async function promptForUniqueId(answers) {
   while (idArray.includes(answers.id)) {
     const { id } = await inquirer.prompt([
       {
@@ -36,7 +36,7 @@ function appMenu() {
       },
       {
         name: 'id',
-        message: "Please type the engineer id"
+        message: "Please type the manager id"
       },
       {
         name: 'email',
@@ -69,15 +69,15 @@ function appMenu() {
         ]
       }
     ]).then(userChoice => {
-      switch(userChoice.memberChoice) {
-      case "Engineer":
-        addEngineer();
-        break;
-      case "Intern":
-        addIntern();
-        break;
-      default:
-        buildTeam();
+      switch (userChoice.memberChoice) {
+        case "Engineer":
+          addEngineer();
+          break;
+        case "Intern":
+          addIntern();
+          break;
+        default:
+          buildTeam();
       }
     });
   }
@@ -125,7 +125,7 @@ function appMenu() {
         message: "Please type the intern email"
       },
       {
-        name: 'github',
+        name: 'school',
         message: "Please type the intern school"
       }
     ]).then(async (answers) => {
@@ -135,8 +135,12 @@ function appMenu() {
       teamMembers.push(intern);
       idArray.push(answers.id);
       createTeam();
+    }).catch((err) => {
+      console.log(err);
     });
   }
+
+
 
   function buildTeam() {
     // Create the output directory if the output path doesn't exist
