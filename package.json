@@ -4,7 +4,7 @@
   "description": "this is a team member id generator",
   "main": "index.js",
   "dependencies": {
-    "inquirer": "^8.1.0"
+    "inquirer": "^8.1.1"
   },
   "devDependencies": {
     "jest": "^27.0.5"
